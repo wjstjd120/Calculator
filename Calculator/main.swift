@@ -9,4 +9,3 @@ while true {
 
     print("결과 : \(calculator.calculate(Calculator.doubleReadLine("-첫번째 숫자입력-"), Calculator.doubleReadLine("-두번째 숫자입력-")))")
 }
-

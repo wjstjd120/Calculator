@@ -32,8 +32,6 @@ class Calculator {
 }
 
 extension Calculator { //readLine, 예외처리 관련
-    static let operArr: [String] = ["+", "-", "/", "*", "%"]
-    
     static func doubleReadLine(_ msg: String) -> Double {
         print(msg)
         if let str = readLine(), let num = Double(str) {
@@ -45,7 +43,7 @@ extension Calculator { //readLine, 예외처리 관련
 
     static func stringReadLine(_ msg: String) -> String {
         print(msg)
-        if let str = readLine(), Calculator.operArr.contains(str) {
+        if let str = readLine(), ["+", "-", "/", "*", "%"].contains(str) {
             return str
         } else {
             return stringReadLine("지정된 문자만 입력해 주세요. (+, -, /, *, %)")
