@@ -7,27 +7,14 @@
 import Foundation
 
 class Calculator {
-    var oper: String
+    var abstractOperation: [String : AbstractOperation]
     
-    init(_ oper: String) {
-        self.oper = oper
+    init(_ abstractOperation: [String : AbstractOperation]) {
+        self.abstractOperation = abstractOperation
     }
     
-    func calculate() -> AbstractOperation {
-        switch oper {
-        case "+":
-            return AddOperation()
-        case "-":
-            return SubtractOperation()
-        case "*":
-            return MultiplyOperation()
-        case "/":
-            return DivideOperation()
-        case "%":
-            return DivideOperation()
-        default:
-            return AddOperation()
-        }
+    func calculate(_ opp: String) -> AbstractOperation {
+        return abstractOperation[opp] ?? AddOperation()
     }
 }
 
@@ -84,8 +71,11 @@ class DivideOperation: AbstractOperation {
     override func operation(_ a: Double, _ b: Double) -> Double {
         return a / b
     }
-    
-    func operation(_ a: Int, _ b: Int) -> Double {
-        return Double(a % b)
+}
+
+class ModOperation: AbstractOperation {
+    // 함수 override
+    override func operation(_ a: Double, _ b: Double) -> Double {
+        return Double(Int(a) % Int(b))
     }
 }
