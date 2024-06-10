@@ -7,5 +7,5 @@
 while true {
     let calculator = Calculator(Calculator.stringReadLine("-계산식 입력-"))
 
-    print("결과 : \(calculator.calculate(Calculator.doubleReadLine("-첫번째 숫자입력-"), Calculator.doubleReadLine("-두번째 숫자입력-")))")
+    print("결과 : \(calculator.calculate().operation(Calculator.doubleReadLine("-첫번째 숫자입력-"), Calculator.doubleReadLine("-두번째 숫자입력-")))")
 }

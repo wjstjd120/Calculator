@@ -13,20 +13,20 @@ class Calculator {
         self.oper = oper
     }
     
-    func calculate(_ firstNum: Double, _ secondeNum: Double) -> Double {
+    func calculate() -> AbstractOperation {
         switch oper {
         case "+":
-            return AddOperation().operation(firstNum, secondeNum)
+            return AddOperation()
         case "-":
-            return SubtractOperation().operation(firstNum, secondeNum)
+            return SubtractOperation()
         case "*":
-            return MultiplyOperation().operation(firstNum, secondeNum)
+            return MultiplyOperation()
         case "/":
-            return DivideOperation().operation(firstNum, secondeNum)
+            return DivideOperation()
         case "%":
-            return Double(DivideOperation().operation(Int(firstNum), Int(secondeNum)))
+            return DivideOperation()
         default:
-            return 0
+            return AddOperation()
         }
     }
 }
@@ -85,7 +85,7 @@ class DivideOperation: AbstractOperation {
         return a / b
     }
     
-    func operation(_ a: Int, _ b: Int) -> Int {
-        return a % b
+    func operation(_ a: Int, _ b: Int) -> Double {
+        return Double(a % b)
     }
 }
