@@ -15,5 +15,5 @@ while true {
     
     let calculator = Calculator(oppArr)
 
-    print("결과 : \(calculator.calculate(Calculator.stringReadLine("-계산식 입력-")).operation(Calculator.doubleReadLine("-첫번째 숫자입력-"), Calculator.doubleReadLine("-두번째 숫자입력-")))")
+    print("결과 : \(calculator.calculate(CustomReadLine.stringReadLine("-계산식 입력-")).operation(CustomReadLine.doubleReadLine("-첫번째 숫자입력-"), CustomReadLine.doubleReadLine("-두번째 숫자입력-")))")
 }

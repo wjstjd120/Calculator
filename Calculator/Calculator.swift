@@ -14,11 +14,11 @@ class Calculator {
     }
     
     func calculate(_ opp: String) -> AbstractOperation {
-        return abstractOperation[opp] ?? AddOperation()
+        return abstractOperation[opp] ?? AbstractOperation()
     }
 }
 
-extension Calculator { //readLine, 예외처리 관련
+class CustomReadLine { //readLine, 예외처리 관련
     static func doubleReadLine(_ msg: String) -> Double {
         print(msg)
         if let str = readLine(), let num = Double(str) {
@@ -30,14 +30,20 @@ extension Calculator { //readLine, 예외처리 관련
 
     static func stringReadLine(_ msg: String) -> String {
         print(msg)
-        if let str = readLine(), ["+", "-", "/", "*", "%"].contains(str) {
+        if let str = readLine(), Name.opp.contains(str) {
             return str
         } else {
-            return stringReadLine("지정된 문자만 입력해 주세요. (+, -, /, *, %)")
+            return stringReadLine("지정된 문자만 입력해 주세요. (\(Name.opp)")
         }
     }
 }
 
+//class test: CustomReadLine {
+//    override class func doubleReadLine(_ msg: String) -> Double {
+//        
+//        return 0.0
+//    }
+//}
 
 class AbstractOperation {
     func operation(_ a: Double, _ b: Double) -> Double {
@@ -78,4 +84,8 @@ class ModOperation: AbstractOperation {
     override func operation(_ a: Double, _ b: Double) -> Double {
         return Double(Int(a) % Int(b))
     }
+}
+
+enum Name {
+    static let opp: [String] = ["+", "-", "/", "*", "%"]
 }
